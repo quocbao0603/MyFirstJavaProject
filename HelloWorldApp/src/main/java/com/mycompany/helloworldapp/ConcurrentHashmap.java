@@ -1,35 +1,44 @@
-// Java program to demonstrate working of ConcurrentHashMap
- 
+// Java Program for traversing a
+// ConcurrentHashMap
+import java.util.*;
 import java.util.concurrent.*;
  
-public class ConcurrentHashMapDemo {
+public class TraversingConcurrentHashMap {
  
     public static void main(String[] args)
     {
-        // create an instance of
-        // ConcurrentHashMap
-        ConcurrentHashMap<Integer, String> m
-            = new ConcurrentHashMap<>();
  
-        // Insert mappings using
-        // put method
-        m.put(100, "Hello");
-        m.put(101, "Geeks");
-        m.put(102, "Geeks");
-        System.out.println(m);
-        // Here we cant add Hello because 101 key
-        // is already present in ConcurrentHashMap object
-        m.putIfAbsent(101, "Hello");
-        System.out.println(m);
-        // We can remove entry because 101 key
-        // is associated with For value
-        m.remove(101, "Geeks");
-        System.out.println(m);
-        // Now we can add Hello
-        m.putIfAbsent(103, "Hello");
-        System.out.println(m);
-        // We cant replace Hello with For
-        m.replace(101, "Hello", "For");
-        System.out.println(m);
+        // create an instance of ConcurrentHashMap
+        ConcurrentHashMap<Integer, String> chmap
+            = new ConcurrentHashMap<Integer, String>();
+ 
+        // Add elements using put()
+        chmap.put(8, "Third");
+        chmap.put(6, "Second");
+        chmap.put(3, "First");
+        chmap.put(11, "Fourth");
+ 
+        // Create an Iterator over the
+        // ConcurrentHashMap
+        Iterator<ConcurrentHashMap.Entry<Integer, String>> 
+            itr = chmap.entrySet().iterator();
+        //Iterator<ConcurrentHashMap.Entry<Integer, String> >
+         //   itr = chmap.entrySet().iterator();
+        //Iterator itr = new iterator();
+        // The hasNext() method is used to check if there is
+        // a next element The next() method is used to
+        // retrieve the next element
+        while (itr.hasNext()){
+            ConcurrentHashMap.Entry<Integer, String> entry= itr.next();
+            System.out.println("Key = " + entry.getKey() + ", Value = " + 
+            entry.getValue());
+        }
+       // while (itr.hasNext()) {
+        //    ConcurrentHashMap.Entry<Integer, String> entry
+         //       = itr.next();
+        //    System.out.println("Key = " + entry.getKey()
+        //                       + ", Value = "
+        //                       + entry.getValue());
+        //}
     }
 }
