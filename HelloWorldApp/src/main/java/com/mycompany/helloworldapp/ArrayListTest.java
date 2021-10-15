@@ -20,12 +20,18 @@ public class ArrayListTest {
         }
         System.out.println(arrList);
         arrList.remove(3);
+        
         System.out.println(arrList);
         for (int i = 0; i < arrList.size(); i++) {
             System.out.print(arrList.get(i) + " ");
         }
-//        for (Object var : arrList) {
-//            System.out.print(var + " ");
-//        }
+        /*
+        int entry = 10;
+        arrList.remove(entry);
+        //it is calling the .remove(int) which removes the index, not the object value.
+        for (Object var : arrList) {
+            System.out.print(var + " ");
+        }
+        */
     }
 }
